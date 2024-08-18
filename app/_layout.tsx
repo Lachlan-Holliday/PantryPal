@@ -1,11 +1,12 @@
 import { StyleSheet, Text, View } from 'react-native'
+import { Stack } from 'expo-router'
 import React from 'react'
 
 const RootLayout = () => {
   return (
-    <View style={styles.container}>
-      <Text>RootLayout</Text>
-    </View>
+    <Stack>
+      <Stack.Screen name='index' options={{headerShown: false}}/>
+    </Stack>
   )
 }
 
