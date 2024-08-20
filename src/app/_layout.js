@@ -30,8 +30,8 @@ export default function RootLayout() {
 
   const paperTheme =
     colorScheme === 'dark'
-      ? CombinedDefaultTheme
-      : CombinedDarkTheme
+      ? CombinedDarkTheme
+      : CombinedDefaultTheme
 
   return (
     <PaperProvider theme={paperTheme}>
