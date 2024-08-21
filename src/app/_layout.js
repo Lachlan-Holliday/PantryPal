@@ -8,9 +8,9 @@ import {
   ThemeProvider
 } from '@react-navigation/native';
 import merge from 'deepmerge';
-
-
+import { useTheme } from '../hooks/useTheme';
 import { Colors } from '../constants/Colors';
+import { StatusBar } from 'expo-status-bar';
 
 const customDarkTheme = {...MD3DarkTheme, colors: Colors.dark}
 const customLightTheme = {...MD3LightTheme, colors: Colors.light}
@@ -23,9 +23,12 @@ const { LightTheme, DarkTheme } = adaptNavigationTheme({
 const CombinedDefaultTheme = merge(LightTheme, customLightTheme);
 const CombinedDarkTheme = merge(DarkTheme, customDarkTheme);
 
+
 export default function RootLayout() {
 
-  const colorScheme = useColorScheme();
+  // const colorScheme = useColorScheme();
+  const {colorScheme} = useTheme();
+
 
 
   const paperTheme =
@@ -40,6 +43,7 @@ export default function RootLayout() {
         <Stack.Screen name='(tabs)' options={{headerShown: false}}/>
       </Stack>
       </ThemeProvider>
+      <StatusBar style={colorScheme === 'dark' ? 'light' : 'dark'}/>
     </PaperProvider>
   );
 }

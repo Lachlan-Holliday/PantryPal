@@ -1,6 +1,7 @@
 import { View } from "react-native";
-import { Button, Text } from 'react-native-paper';
+import { Avatar, Button, Card, Text } from 'react-native-paper';
 
+const LeftContent = props => <Avatar.Icon {...props} icon="folder" />
 
 
 export default function App() {
@@ -8,14 +9,23 @@ export default function App() {
     <View
       style={{
         flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
+        margin: 16
+       
       }}>
 
-        <Text>Edit app</Text>
-        <Button icon="camera" mode="contained" onPress={() => console.log('Pressed')}>
-    Press me
-  </Button>
+<Card>
+<Card.Cover source={{ uri: 'https://picsum.photos/700' }} />
+
+    <Card.Title title="Card Title" subtitle="Card Subtitle" left={LeftContent} />
+    <Card.Content>
+      <Text variant="titleLarge">Card title</Text>
+      <Text variant="bodyMedium">Card content</Text>
+    </Card.Content>
+    <Card.Actions>
+      <Button>Cancel</Button>
+      <Button>Ok</Button>
+    </Card.Actions>
+  </Card> 
       </View>
   );
 }
