@@ -26,6 +26,7 @@ export default function App() {
       <Button>Ok</Button>
     </Card.Actions>
   </Card> 
+  <Text variant="titleLarge">hello</Text>
       </View>
   );
 }

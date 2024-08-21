@@ -39,7 +39,10 @@ export default function RootLayout() {
   return (
     <PaperProvider theme={paperTheme}>
       <ThemeProvider value={paperTheme}>
-      <Stack>
+      <Stack  screenOptions={{
+              // Hide the header for all other routes.
+              headerShown: false,
+            }}>
         <Stack.Screen name='(tabs)' options={{headerShown: false}}/>
       </Stack>
       </ThemeProvider>

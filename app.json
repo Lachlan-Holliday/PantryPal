@@ -4,11 +4,11 @@
     "slug": "pantrypal",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/profile_pic.png",
+    "icon": "./src/assets/images/profile_pic.png",
     "scheme": "pantrypal",
     "userInterfaceStyle": "automatic",
     "splash": {
-      "image": "./assets/images/Animatedlogo.gif",
+      "image": "./src/assets/images/Animatedlogo.gif",
       "resizeMode": "contain",
       "backgroundColor": "#00bf63"
     },
@@ -17,14 +17,14 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/profile_pic.png",
+        "foregroundImage": "./src/assets/images/profile_pic.png",
         "backgroundColor": "#ffffff"
       }
     },
     "web": {
       "bundler": "metro",
       "output": "static",
-      "favicon": "./assets/images/circleprofilepic.png"
+      "favicon": "./src/assets/images/circleprofilepic.png"
     },
     "plugins": [
       "expo-router"
