@@ -1,21 +1,25 @@
+import * as React from 'react';
+
 import { View } from 'react-native'
-import { Button, Text } from 'react-native-paper'
+import { Button, Text, Switch } from 'react-native-paper'
 import { useTheme } from '../../hooks/useTheme'
 
+
 export default function Settings() {
-    const {toggleTheme} = useTheme()
+    const {toggleTheme} = useTheme();
+
+    //switch
+    const [isSwitchOn, setIsSwitchOn] = React.useState(false);
+    const onToggleSwitch = () => {setIsSwitchOn(!isSwitchOn); toggleTheme()}
+
+
 
   return (
     <View style={{ margin: 16}}>
         <Text variant="titleLarge" style={{ marginVertical: 16}}>
             Settings
         </Text>
-        <Button 
-        icon="repeat"
-        mode="contained"
-        onPress={toggleTheme}>
-            Toggle Theme
-        </Button>
+        <Switch value={isSwitchOn} onValueChange={onToggleSwitch} />
     </View>
   )
 };
