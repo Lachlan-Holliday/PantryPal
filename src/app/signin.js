@@ -1,52 +1,56 @@
-import { Stack } from 'expo-router'
-import React from 'react'
-import { useColorScheme } from 'react-native';
-import {MD3DarkTheme, MD3LightTheme, PaperProvider, adaptNavigationTheme} from 'react-native-paper';
-import {
-  DarkTheme as NavigationDarkTheme,
-  DefaultTheme as NavigationDefaultTheme,
-  ThemeProvider
-} from '@react-navigation/native';
-import merge from 'deepmerge';
-import { useTheme } from '../hooks/useTheme';
-import { Colors } from '../constants/Colors';
-import { StatusBar } from 'expo-status-bar';
+// app/signin.js
+import React, { useState } from 'react';
+import { View, StyleSheet } from 'react-native';
+import { TextInput, Button, Text } from 'react-native-paper';
 
-const customDarkTheme = {...MD3DarkTheme, colors: Colors.dark}
-const customLightTheme = {...MD3LightTheme, colors: Colors.light}
+export default function SignInScreen() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
-const { LightTheme, DarkTheme } = adaptNavigationTheme({
-  reactNavigationLight: NavigationDefaultTheme,
-  reactNavigationDark: NavigationDarkTheme,
-});
-
-const CombinedDefaultTheme = merge(LightTheme, customLightTheme);
-const CombinedDarkTheme = merge(DarkTheme, customDarkTheme);
-
-
-export default function SignIn() {
-
-  // const colorScheme = useColorScheme();
-  const {colorScheme} = useTheme();
-
-
-
-  const paperTheme =
-    colorScheme === 'dark'
-      ? CombinedDarkTheme
-      : CombinedDefaultTheme
+  const handleSignIn = () => {
+    console.log('Signing in with', email, password);
+    // Implement sign-in logic here
+  };
 
   return (
-    <PaperProvider theme={paperTheme}>
-      <ThemeProvider value={paperTheme}>
-      <Stack  screenOptions={{
-              // Hide the header for all other routes.
-              headerShown: false,
-            }}>
-        <Stack.Screen name='(tabs)' options={{headerShown: false}}/>
-      </Stack>
-      </ThemeProvider>
-      <StatusBar style={colorScheme === 'dark' ? 'light' : 'dark'}/>
-    </PaperProvider>
+    <View style={styles.container}>
+      <Text style={styles.title}>Sign In</Text>
+      <TextInput
+        label="Email"
+        value={email}
+        onChangeText={setEmail}
+        style={styles.input}
+      />
+      <TextInput
+        label="Password"
+        value={password}
+        onChangeText={setPassword}
+        secureTextEntry
+        style={styles.input}
+      />
+      <Button mode="contained" onPress={handleSignIn} style={styles.button}>
+        Sign In
+      </Button>
+    </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    padding: 16,
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginBottom: 24,
+    textAlign: 'center',
+  },
+  input: {
+    marginBottom: 16,
+  },
+  button: {
+    marginTop: 16,
+  },
+});
