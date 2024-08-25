@@ -11,6 +11,7 @@ import merge from 'deepmerge';
 import { useTheme } from '../hooks/useTheme';
 import { Colors } from '../constants/Colors';
 import { StatusBar } from 'expo-status-bar';
+import {SignInScreen} from './signin'
 
 const customDarkTheme = {...MD3DarkTheme, colors: Colors.dark}
 const customLightTheme = {...MD3LightTheme, colors: Colors.light}
@@ -39,7 +40,12 @@ export default function RootLayout() {
   return (
     <PaperProvider theme={paperTheme}>
       <ThemeProvider value={paperTheme}>
-      <Stack>
+      
+
+      <Stack  screenOptions={{
+              // Hide the header for all other routes.
+              headerShown: false,
+            }}>
         <Stack.Screen name='(tabs)' options={{headerShown: false}}/>
       </Stack>
       </ThemeProvider>
